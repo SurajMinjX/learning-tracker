@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ef">
+  <meta name="description" content="A personal learning dashboard: milestones, language proficiency, and GitHub projects.">
+  <title>Fieldnote — Developer Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner page-width">
+      <a class="brand" href="/" aria-label="Fieldnote home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M7 21.5 15.5 7l1.8 8.1H25L15 26l-1.3-7.2L7 21.5Z" fill="currentColor"/><circle cx="24.5" cy="7.5" r="2" fill="#D8F27A"/></svg>
+        </span>
+        <span class="brand-copy"><strong>FIELDNOTE</strong><span>DEV JOURNAL</span></span>
+      </a>
+      <nav class="public-nav" id="publicNav" aria-label="Main navigation">
+        <a href="#learning">Journey</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+      </nav>
+      <div class="header-actions">
+        <button class="button button-quiet admin-entry" id="adminButton" type="button">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.25" y="8.5" width="11.5" height="8.25" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M6.8 8.5V6.4a3.2 3.2 0 0 1 6.4 0v2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Admin</span>
+        </button>
+        <div class="header-admin-actions" id="headerAdminActions" hidden>
+          <button class="button button-quiet" id="previewButton" type="button">Public preview</button>
+          <button class="button button-dark button-small" id="headerSignOut" type="button">Sign out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="publicView">
+    <div class="sample-notice page-width" id="sampleNotice" hidden>
+      <span class="notice-icon" aria-hidden="true">✳</span>
+      <p><strong>Starter content</strong><span>Example milestones and proficiency levels are shown. Personalize them in Admin before sharing.</span></p>
+      <button type="button" class="notice-action" id="noticeAdmin">Personalize dashboard <span aria-hidden="true">↗</span></button>
+    </div>
+
+    <section class="hero-section page-width" aria-labelledby="heroTitle">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> PERSONAL DEVELOPER DASHBOARD <span class="eyebrow-divider">/</span> <span id="displayNameEyebrow">DEVELOPER</span></p>
+          <h1 id="heroTitle">Learning in public.<br><span>Building for what’s next.</span></h1>
+          <p class="hero-description" id="heroBio">A personal record of the skills I’m growing, the work I’m shipping, and the milestones along the way.</p>
+          <a class="button button-lime hero-cta" href="#learning">Explore my journey <span aria-hidden="true">↘</span></a>
+          <div class="hero-note"><span class="tiny-spark" aria-hidden="true">✳</span><span>Curiosity, consistency, and a little bit of code.</span></div>
+        </div>
+
+        <div class="hero-visual" aria-label="Current learning focus">
+          <div class="visual-orbit orbit-one" aria-hidden="true"></div>
+          <div class="visual-orbit orbit-two" aria-hidden="true"></div>
+          <div class="visual-cross" aria-hidden="true">+</div>
+          <div class="focus-preview">
+            <div class="focus-preview-top">
+              <span class="focus-mini-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="focus-label" id="heroFocusLabel">CURRENT FOCUS</span>
+              <span class="live-dot" aria-label="In progress"></span>
+            </div>
+            <h2 id="heroFocusTitle">Python foundations</h2>
+            <p id="heroFocusDescription">Practice core syntax, data structures, and problem solving through small builds.</p>
+            <div class="hero-progress-meta"><span>Progress</span><strong id="heroFocusPercent">64%</strong></div>
+            <div class="hero-progress-track"><span id="heroFocusBar" style="width:64%"></span></div>
+            <div class="focus-preview-footer"><span>ONE STEP AT A TIME</span><span class="footer-arrows" aria-hidden="true">↗ ↗ ↗</span></div>
+          </div>
+          <div class="floating-stamp" aria-hidden="true"><span>MAKE</span><strong>IT<br>REAL</strong><span class="stamp-star">✳</span></div>
+          <div class="visual-coordinate" aria-hidden="true">01 — KEEP GOING</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section page-width" aria-label="Dashboard overview">
+      <div class="stat-cell"><span class="stat-number" id="statSkills">03</span><span class="stat-label">Languages tracked</span><span class="stat-mark" aria-hidden="true">↗</span></div>
+      <div class="stat-cell"><span class="stat-number" id="statMilestones">01</span><span class="stat-label">Milestones completed</span><span class="stat-mark" aria-hidden="true">✳</span></div>
+      <div class="stat-cell"><span class="stat-number" id="statProjects">00</span><span class="stat-label">Projects shipped</span><span class="stat-mark" aria-hidden="true">⌘</span></div>
+      <div class="stat-context"><span class="context-label">THE PRACTICE</span><span>Learn it.<br>Make it. Share it.</span></div>
+    </section>
+
+    <section class="section-block page-width learning-section" id="learning" aria-labelledby="learningTitle">
+      <div class="section-heading">
+        <div><p class="section-kicker"><span>01</span> THE ROADMAP</p><h2 id="learningTitle">A little further,<br><em>every day.</em></h2></div>
+        <p class="section-intro">Skills are built in the small moments. Here’s what I’ve learned, what I’m working on, and what’s coming next.</p>
+      </div>
+      <div class="learning-grid">
+        <div class="roadmap-card">
+          <div class="card-topline"><span>LEARNING PATH</span><span id="roadmapCount">04 MILESTONES</span></div>
+          <div class="milestone-list" id="milestoneList"></div>
+        </div>
+        <aside class="focus-card" aria-labelledby="focusCardTitle">
+          <div class="focus-card-top"><span class="focus-card-symbol" aria-hidden="true">✳</span><span>IN THE WORKS</span></div>
+          <div class="focus-ring-wrap">
+            <svg class="focus-ring" viewBox="0 0 120 120" role="img" aria-label="Current milestone progress">
+              <circle class="ring-track" cx="60" cy="60" r="47"></circle>
+              <circle class="ring-progress" id="focusRing" cx="60" cy="60" r="47"></circle>
+              <text x="60" y="57" class="ring-number" id="focusRingNumber">64%</text>
+              <text x="60" y="73" class="ring-caption">COMPLETE</text>
+            </svg>
+          </div>
+          <p class="focus-card-overline" id="focusCardOverline">CURRENT MILESTONE</p>
+          <h3 id="focusCardTitle">Python foundations</h3>
+          <p class="focus-card-description" id="focusCardDescription">Practice core syntax, data structures, and problem solving through small builds.</p>
+          <div class="focus-card-bottom"><span>STAY CURIOUS</span><span aria-hidden="true">↗</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-block skills-section" id="skills" aria-labelledby="skillsTitle">
+      <div class="page-width">
+        <div class="section-heading skills-heading">
+          <div><p class="section-kicker"><span>02</span> THE TOOLKIT</p><h2 id="skillsTitle">Skills in <em>progress.</em></h2></div>
+          <p class="section-intro">A snapshot of the tools I’m getting to know. Progress is personal—not a finish line.</p>
+        </div>
+        <div class="skill-grid" id="skillGrid"></div>
+        <p class="skills-footnote"><span aria-hidden="true">✳</span> Progress reflects my own learning journey.</p>
+      </div>
+    </section>
+
+    <section class="section-block page-width projects-section" id="projects" aria-labelledby="projectsTitle">
+      <div class="section-heading projects-heading">
+        <div><p class="section-kicker"><span>03</span> BUILT & SHARED</p><h2 id="projectsTitle">Made, not just <em>planned.</em></h2></div>
+        <p class="section-intro">Small experiments, useful tools, and the occasional happy accident. These projects live on GitHub.</p>
+      </div>
+      <div id="projectGrid" class="project-grid"></div>
+    </section>
+
+    <section class="closing-section page-width">
+      <div class="closing-mark" aria-hidden="true">✳</div>
+      <div><p class="section-kicker">A WORK IN PROGRESS</p><h2>Keep learning.<br><em>Keep making.</em></h2></div>
+      <a class="button button-dark" href="#learning">Back to the roadmap <span aria-hidden="true">↑</span></a>
+      <span class="closing-doodle" aria-hidden="true">⌁</span>
+    </section>
+  </main>
+
+  <main class="admin-view page-width" id="adminView" hidden>
+    <div class="admin-intro">
+      <div>
+        <p class="section-kicker"><span>PRIVATE WORKSPACE</span> / DASHBOARD MANAGER</p>
+        <h1>Make it <em>yours.</em></h1>
+        <p class="admin-subtitle">Update the details that appear on your public dashboard. Nothing changes until you save.</p>
+      </div>
+      <div class="admin-private-chip"><span class="private-lock" aria-hidden="true">◆</span> PRIVATE ADMIN</div>
+    </div>
+
+    <div class="admin-savebar" role="status" aria-live="polite">
+      <div class="savebar-message"><span class="save-indicator" id="saveIndicator"></span><span id="saveMessage">Your edits are private until you save.</span></div>
+      <button class="button button-dark save-button" id="saveChanges" type="button"><span>Save changes</span><span aria-hidden="true">↗</span></button>
+    </div>
+
+    <div class="admin-workspace">
+      <nav class="editor-nav" aria-label="Dashboard sections">
+        <p class="editor-nav-label">EDIT YOUR DASHBOARD</p>
+        <button class="editor-tab is-active" type="button" data-tab="profile"><span class="tab-icon">◉</span><span>Profile</span><span class="tab-arrow">↗</span></button>
+        <button class="editor-tab" type="button" data-tab="learningPath"><span class="tab-icon">↗</span><span>Learning path</span><span class="tab-arrow">↗</span></button>
+        <button class="editor-tab" type="button" data-tab="skills"><span class="tab-icon">◫</span><span>Languages & skills</span><span class="tab-arrow">↗</span></button>
+        <button class="editor-tab" type="button" data-tab="projects"><span class="tab-icon">⌘</span><span>GitHub projects</span><span class="tab-arrow">↗</span></button>
+        <div class="nav-helper"><span class="helper-star">✳</span><p>Your public dashboard is always read-only. Only this private panel can change its content.</p></div>
+      </nav>
+      <section class="editor-card" aria-label="Edit dashboard content">
+        <div class="editor-card-header"><div><span class="editor-eyebrow" id="editorEyebrow">PROFILE</span><h2 id="editorTitle">Your introduction</h2></div><span class="editor-step" id="editorStep">01 / 04</span></div>
+        <div class="editor-content" id="adminEditor"></div>
+      </section>
+    </div>
+    <div class="admin-security-foot"><span aria-hidden="true">◈</span> Password-protected · changes are stored on this server · sign out when you’re done</div>
+  </main>
+
+  <footer class="site-footer page-width" id="siteFooter">
+    <a class="footer-brand" href="/">FIELDNOTE <span>DEV JOURNAL</span></a>
+    <p>A learning journey, in progress. <span id="footerDisplayName">Developer</span> © <span id="currentYear">2026</span></p>
+    <a href="#siteHeader" class="back-top">BACK TO TOP <span aria-hidden="true">↑</span></a>
+  </footer>
+
+  <div class="auth-overlay" id="authOverlay" hidden>
+    <div class="auth-backdrop" data-close-auth="true"></div>
+    <section class="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="authTitle" aria-describedby="authDescription">
+      <button class="auth-close" id="closeAuth" type="button" aria-label="Close admin sign in">×</button>
+      <div class="auth-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M7 21.5 15.5 7l1.8 8.1H25L15 26l-1.3-7.2L7 21.5Z" fill="currentColor"/></svg></div>
+      <p class="section-kicker" id="authKicker">PRIVATE WORKSPACE</p>
+      <h2 id="authTitle">Admin sign in</h2>
+      <p class="auth-description" id="authDescription">Use your owner password to manage the public dashboard.</p>
+      <div id="authFormHost"></div>
+      <p class="auth-footnote"><span aria-hidden="true">◈</span> Private to the dashboard owner</p>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

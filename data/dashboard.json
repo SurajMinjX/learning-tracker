@@ -1,0 +1,57 @@
+{
+  "profile": {
+    "displayName": "Developer",
+    "headline": "Learning in public.\nBuilding for what’s next.",
+    "bio": "A personal record of the skills I’m growing, the work I’m shipping, and the milestones along the way."
+  },
+  "sampleData": true,
+  "skills": [
+    {
+      "id": "python",
+      "name": "Python",
+      "level": 68
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "level": 48
+    },
+    {
+      "id": "html-css",
+      "name": "HTML / CSS",
+      "level": 86
+    }
+  ],
+  "learningPath": [
+    {
+      "id": "web-basics",
+      "title": "HTML & CSS foundations",
+      "description": "Build accessible, responsive layouts with semantic markup and thoughtful styling.",
+      "status": "completed",
+      "progress": 100
+    },
+    {
+      "id": "python-core",
+      "title": "Python foundations",
+      "description": "Practice core syntax, data structures, and problem solving through small builds.",
+      "status": "in-progress",
+      "progress": 64
+    },
+    {
+      "id": "java-oop",
+      "title": "Java and object-oriented design",
+      "description": "Get comfortable structuring applications with classes, interfaces, and tests.",
+      "status": "planned",
+      "progress": 0
+    },
+    {
+      "id": "ship-project",
+      "title": "Build and ship a portfolio project",
+      "description": "Bring the learning together in a complete, documented project.",
+      "status": "planned",
+      "progress": 0
+    }
+  ],
+  "projects": [],
+  "updatedAt": "2026-10-02T11:49:54.712Z"
+}
